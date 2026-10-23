@@ -204,7 +204,7 @@ function showTeacher() {
       <ul class="list-tight">
         <li>1차시 → <b>튜터 본부</b>, 2차시 → <b>보안 관제탑</b>, 3차시 → <b>에듀원 클라우드 섬</b>.</li>
         <li>미션 기록은 연수생 각자의 브라우저에만 저장돼요(서버 없음). 같은 기기로 이어 하면 다음 차시에도 도장이 남아요.</li>
-        <li>공유 활동: 미션 결과 화면의 <b>공유 글 복사</b> → 패들렛에 붙여 넣기. 공유 광장에서 다시 복사할 수도 있어요.</li>
+        <li>공유 활동: 미션 결과 화면의 <b>공유 글 복사</b> → 패들렛의 안내된 번호 칸에 붙여 넣기. 기본 패들렛은 <b>padlet.com/oneteacher/tutor_rescue_2026</b>(9칸)이에요.</li>
         <li>롤플레이는 세 갈래 선택지 대화예요. 고를 때마다 게이지가 움직이고, 표정이 바뀌어요.</li>
       </ul>
       <div class="field" style="margin-top:12px"><label for="tCode">강사 코드</label><input class="input" id="tCode" type="password" inputmode="numeric" placeholder="config.js의 teacherCode"></div>

@@ -15,7 +15,7 @@ function renderNote() {
     </div></div>
     <div class="note-body">
       <div class="boardbar"><h2 class="display" style="font-size:26px;margin:0">튜터 수첩</h2>
-        <div class="seg" role="group" aria-label="차시 거르기">${[["all", "전체"], ["s1", "1차시"], ["s2", "2차시"], ["s4", "4차시"]].map(([k, n]) => `<button type="button" data-f="${k}" aria-pressed="${STATE.boardFilter === k}">${n}</button>`).join("")}</div>
+        <div class="seg" role="group" aria-label="차시 거르기">${[["all", "전체"], ["s1", "1차시"], ["s2", "2차시"], ["s4", "3차시"]].map(([k, n]) => `<button type="button" data-f="${k}" aria-pressed="${STATE.boardFilter === k}">${n}</button>`).join("")}</div>
         <button class="btn sm" id="bProj" type="button" aria-pressed="${STATE.proj}">${STATE.proj ? "크게 보기 끄기" : "크게 보기"}</button></div>
       <div class="compose" id="bCompose"><input class="input" id="bText" maxlength="300" placeholder="자유 메모: 체험해 본 사이트, 현장 팁, 질문 (링크는 https:// 로)"><button class="btn primary" id="bSend" type="button">수첩에 적기</button></div>
       <div id="bCloud"></div><div id="bWall"></div>

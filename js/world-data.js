@@ -5,7 +5,7 @@ const ZONES = {
        line: "튜터는 <b>대신 해 주는 사람</b>이 아니라 <b>배움의 접속을 지켜 주는 사람</b>이에요. 오늘은 우리의 사명을 세워요!"},
   s2: {no: "2", name: "보안 관제탑", x: 53, y: 27, bg: "assets/bg/security.webp", guide: "narae_wow",
        line: "빠른 해결보다 <b>안전한 해결</b>! 개인정보를 지키고, 막히면 <b>테크센터</b>에 정확히 알리는 법을 익혀요."},
-  s4: {no: "4", name: "에듀원 클라우드 섬", x: 86, y: 40, bg: "assets/bg/eduone.webp", guide: "narae_thumb",
+  s4: {no: "3", name: "에듀원 클라우드 섬", x: 86, y: 40, bg: "assets/bg/eduone.webp", guide: "narae_thumb",
        line: "<b>클래스 → 과목 → 단원 → 자료</b>. 에듀원 2.0 구조를 알고, 무한 로딩에도 수업이 멈추지 않게 준비해요."}
 };
 const PLACES = {

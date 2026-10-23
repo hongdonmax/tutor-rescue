@@ -372,7 +372,7 @@ JSON 하나만: {"good":"칭찬","fix":["보완1","보완2"],"weak":"가장 약�
   };
 };
 
-/* ---------- M4-0 에듀원 접속 체크 ---------- */
+/* ---------- M3-0 에듀원 접속 체크 ---------- */
 GAMES.eduone = (root, api) => {
   const steps = ["eduone.busanedu.net 접속", "부여된 계정(이메일·구글 연동)으로 로그인", "클래스 / 과목 화면 확인", "엔트리 실습 화면 열어 보기 (선택)"];
   root.innerHTML = `<div class="panel" style="display:flex;flex-direction:column;gap:12px">
@@ -389,7 +389,7 @@ GAMES.eduone = (root, api) => {
   };
 };
 
-/* ---------- M4-1 기능 카드 뒤집기 ---------- */
+/* ---------- M3-1 기능 카드 뒤집기 ---------- */
 GAMES.memory = (root, api) => {
   const cards = shuffle(MEM_PAIRS.flatMap(p => [{k: p.k, t: p.f, feat: true}, {k: p.k, t: p.d, feat: false}]));
   let open = [], matched = 0, moves = 0, lock = false;
@@ -411,7 +411,7 @@ GAMES.memory = (root, api) => {
   });
 };
 
-/* ---------- M4-2 구조 쌓기 ---------- */
+/* ---------- M3-2 구조 쌓기 ---------- */
 GAMES.stack = (root, api) => {
   let next = 0, mistakes = 0;
   const order = STACK_LEVELS.map((l, i) => Object.assign({i}, l));
@@ -450,7 +450,7 @@ GAMES.stack = (root, api) => {
   };
 };
 
-/* ---------- M4-3 타임싱크 실험실 ---------- */
+/* ---------- M3-3 타임싱크 실험실 ---------- */
 GAMES.timesync = (root, api) => {
   const OPEN = 600, CLOSE = 620; // 10:00 ~ 10:20 (분 단위)
   const tried = new Set(); let running = false; let qDone = false; let qOk = false;
@@ -513,7 +513,7 @@ GAMES.timesync = (root, api) => {
   };
 };
 
-/* ---------- M4-4 위기 대응 시뮬레이터 ---------- */
+/* ---------- M3-4 위기 대응 시뮬레이터 ---------- */
 GAMES.crisis = (root, api, m) => {
   const st = {}; CRISIS.forEach(c => st[c.id] = {picked: [], checked: false, firstOk: null});
   let cur = CRISIS[0].id;
@@ -547,7 +547,7 @@ GAMES.crisis = (root, api, m) => {
   };
 };
 
-/* ---------- M4-5 나의 첫 클래스 인증 ---------- */
+/* ---------- M3-5 나의 첫 클래스 인증 ---------- */
 GAMES.classpost = (root, api, m) => {
   const steps = ["새로만들기로 과목(또는 시험·챌린지) 개설", "단원 설정: 제목·소개·날짜 입력 후 만들기", "수업 자료 추가 (프로그래밍 실습 등)", "클래스를 만들어 과목과 학생 등록"];
   const picked = new Set();

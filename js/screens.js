@@ -146,7 +146,7 @@ function renderCert() {
           <div class="seal">튜터<br>출동<br>완료</div>
           <div class="body"><div class="ck">CERTIFICATE · 체험 수료</div><h2>스마트교실 구조대</h2>
           <div class="who">${esc(STATE.me ? STATE.me.nick : "")} 튜터 <span style="font-size:18px;color:#5A6287">${esc(STATE.me ? STATE.me.team + "조" : "")}</span></div>
-          <p>위 튜터는 ${esc(CFG.courseName)}의 1·2·4차시 체험 미션 ${all}개를 해결하여, 학생 곁에서 <b>배움의 접속을 지키는 디지털튜터</b>로 출동할 준비를 마쳤기에 이 증서를 드립니다.</p>
+          <p>위 튜터는 ${esc(CFG.courseName)}의 1·2·3차시 체험 미션 ${all}개를 해결하여, 학생 곁에서 <b>배움의 접속을 지키는 디지털튜터</b>로 출동할 준비를 마쳤기에 이 증서를 드립니다.</p>
           ${oath ? `<p style="margin-top:10px;font-size:14px;color:#5A6287">나의 사명 · “${esc(oath.text)}”</p>` : ""}
           <div class="meta"><span>XP ${xp()}</span><span>${ds}</span><span>선배 튜터 나래 · 로봇 코비</span></div></div>
         </div>
@@ -176,7 +176,7 @@ async function saveCertPNG(ds, oath) {
   ctx.fillStyle = "#141A3C"; ctx.font = "64px Jua, 'Noto Sans KR', sans-serif"; ctx.fillText(`${STATE.me.nick} 튜터`, 110, 370);
   ctx.fillStyle = "#5A6287"; ctx.font = "700 30px 'Noto Sans KR', sans-serif"; ctx.fillText(`${STATE.me.team}조`, 110 + ctx.measureText(`${STATE.me.nick} 튜터`).width * 1.9 + 30, 370);
   ctx.fillStyle = "#2B3466"; ctx.font = "500 30px 'Noto Sans KR', sans-serif";
-  let y = wrapText(ctx, `위 튜터는 ${CFG.courseName}의 1·2·4차시 체험 미션 ${MISSIONS.length}개를 해결하여, 학생 곁에서 배움의 접속을 지키는 디지털튜터로 출동할 준비를 마쳤기에 이 증서를 드립니다.`, 110, 450, 900, 48);
+  let y = wrapText(ctx, `위 튜터는 ${CFG.courseName}의 1·2·3차시 체험 미션 ${MISSIONS.length}개를 해결하여, 학생 곁에서 배움의 접속을 지키는 디지털튜터로 출동할 준비를 마쳤기에 이 증서를 드립니다.`, 110, 450, 900, 48);
   if (oath) { ctx.fillStyle = "#5A6287"; ctx.font = "500 24px 'Noto Sans KR', sans-serif"; y = wrapText(ctx, `나의 사명 · “${oath.text}”`, 110, y + 20, 900, 36); }
   ctx.fillStyle = "#1F2A6B"; ctx.font = "800 26px 'Noto Sans KR', sans-serif"; ctx.fillText(`XP ${xp()}   ·   ${ds}   ·   선배 튜터 나래`, 400, H - 110);
   ctx.save(); ctx.translate(W - 200, 170); ctx.rotate(-0.17); ctx.fillStyle = "#F47B20"; ctx.beginPath(); ctx.arc(0, 0, 86, 0, Math.PI * 2); ctx.fill();
@@ -202,7 +202,7 @@ function showTeacher() {
     <div class="panel">
       <h3 class="display" style="font-size:22px">진행 도우미</h3>
       <ul class="list-tight">
-        <li>1차시 → <b>튜터 본부</b>, 2차시 → <b>보안 관제탑</b>, 4차시 → <b>에듀원 클라우드 섬</b>.</li>
+        <li>1차시 → <b>튜터 본부</b>, 2차시 → <b>보안 관제탑</b>, 3차시 → <b>에듀원 클라우드 섬</b>.</li>
         <li>미션 기록은 연수생 각자의 브라우저에만 저장돼요(서버 없음). 같은 기기로 이어 하면 다음 차시에도 도장이 남아요.</li>
         <li>공유 활동: 미션 결과 화면의 <b>공유 글 복사</b> → 패들렛에 붙여 넣기. 공유 광장에서 다시 복사할 수도 있어요.</li>
         <li>롤플레이는 세 갈래 선택지 대화예요. 고를 때마다 게이지가 움직이고, 표정이 바뀌어요.</li>

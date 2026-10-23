@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>튜터 출동 운영 가이드</title>
-<meta name="description" content="튜터 출동! 스마트교실 구조대 — 강의 운영 방법, ChatGPT 그림 프롬프트, GitHub Pages 배포 방법">
+<meta name="description" content="튜터 출동! 스마트교실 구조대 — 강의 운영 방법, 그림 프롬프트, GitHub Pages 배포 방법">
 <link rel="icon" href="../assets/char/kobi_icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,8 +60,8 @@ img{max-width:100%}
 <header class="hero"><div class="wrap">
   <div class="kick">MAKING &amp; RUNNING GUIDE</div>
   <h1>튜터 출동! 스마트교실 구조대<br>운영·제작 가이드</h1>
-  <p>2026 부산 디지털튜터 양성센터 지역특화과정 1·2·4차시를 21개 체험 미션으로 바꾼 웹게임이에요. 강의 중 쓰는 방법, 그림을 만든 ChatGPT 프롬프트, GitHub에 올리는 방법을 정리했어요.</p>
-  <nav class="toc" aria-label="목차"><a class="go" href="../">게임 열기</a><a href="#run">① 수업 운영</a><a href="#map">② 차시별 미션</a><a href="#share">③ 공유 활동</a><a href="#art">④ ChatGPT 그림</a><a href="#key">⑤ 그림 다듬기</a><a href="#deploy">⑥ GitHub 배포</a></nav>
+  <p>2026 부산 디지털튜터 양성센터 지역특화과정 1·2·4차시를 21개 체험 미션으로 바꾼 웹게임이에요. 강의 중 쓰는 방법, 그림을 만든 프롬프트, GitHub에 올리는 방법을 정리했어요.</p>
+  <nav class="toc" aria-label="목차"><a class="go" href="../">게임 열기</a><a href="#run">① 수업 운영</a><a href="#map">② 차시별 미션</a><a href="#share">③ 공유 활동</a><a href="#art">④ 그림 만들기</a><a href="#key">⑤ 그림 다듬기</a><a href="#deploy">⑥ GitHub 배포</a></nav>
 </div></header>
 
 <main class="wrap">
@@ -96,7 +96,7 @@ img{max-width:100%}
 </section>
 
 <section id="art">
-  <h2><small>STEP 4 · CHATGPT ART</small>그림은 ChatGPT 한 대화방에서</h2>
+  <h2><small>STEP 4 · ART</small>그림은 한 대화방에서 이어서</h2>
   <p class="lead">그림 10장을 <b>한 대화방에서 이어서</b> 만들어 화풍과 캐릭터를 맞췄어요. 첫 키아트에 스타일을 자세히 쓰고, 다음부터는 “같은 그림체로”라고만 했어요. 오려 쓸 그림은 단색 초록(#00FF00)이나 마젠타(#FF00FF) 배경으로 받았어요.</p>
   <div id="prompts"></div>
   <div class="shots">
@@ -109,7 +109,7 @@ img{max-width:100%}
 
 <section id="key">
   <h2><small>STEP 5 · CUT OUT</small>배경 지우고 한 장씩 자르기</h2>
-  <p class="lead">단색 배경을 투명하게 지우고(크로마키), 덩어리마다 잘라 webp로 저장했어요. 쓴 코드는 <a href="chroma_key.py">chroma_key.py</a>예요. 코드 없이 하려면 캔바 <b>배경 제거</b>나 ChatGPT 이미지 편집의 <b>배경 제거</b>를 써도 돼요.</p>
+  <p class="lead">단색 배경을 투명하게 지우고(크로마키), 덩어리마다 잘라 webp로 저장했어요. 쓴 코드는 <a href="chroma_key.py">chroma_key.py</a>예요. 코드 없이 하려면 캔바 <b>배경 제거</b>나 이미지 편집 도구의 <b>배경 제거</b>를 써도 돼요.</p>
   <div class="shots">
     <figure><img src="img/sheet_tutor_after.jpg" alt="배경을 지운 캐릭터 시트" loading="lazy"><figcaption>초록 배경 제거 + 초록 번짐(despill) 정리</figcaption></figure>
     <figure><img src="img/sheet_icons_after.jpg" alt="배경을 지운 아이콘 시트" loading="lazy"><figcaption>마젠타 배경 제거 → 18개로 자르기</figcaption></figure>
@@ -132,12 +132,12 @@ img{max-width:100%}
       <tr><td class="code">js/data.js</td><td>교안 기반 미션·퀴즈·롤플레이 대사 데이터</td></tr>
       <tr><td class="code">js/games.js, js/persona.js</td><td>미션 17종 화면, 선택지 롤플레이</td></tr>
       <tr><td class="code">js/world-data.js, js/screens.js</td><td>지도 위치, 그림 연결, 화면 전환, 수료증</td></tr>
-      <tr><td class="code">assets/</td><td>ChatGPT로 만든 그림 (배경·캐릭터·인물·아이콘)</td></tr>
+      <tr><td class="code">assets/</td><td>그림 (배경·캐릭터·인물·아이콘)</td></tr>
     </tbody>
   </table></div>
 </section>
 </main>
-<footer class="wrap">부산 명진초등학교 최일훈 · 그림 ChatGPT · 코드 바이브코딩 · <a href="../">게임으로 돌아가기</a></footer>
+<footer class="wrap">부산 명진초등학교 최일훈 · <a href="../">게임으로 돌아가기</a></footer>
 
 <script src="../js/data.js"></script>
 <script>

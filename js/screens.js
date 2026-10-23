@@ -153,7 +153,7 @@ function renderCert() {
         <div class="row" style="margin-top:12px">${allDone ? `<button class="btn primary" type="button" id="certSave">수료증 그림 저장</button>` : `<span class="muted">도장 ${all - total}개가 더 필요해요.</span>`}</div>
       </div>
     </div></div>
-    <footer class="gfoot"><span>부산 명진초등학교 최일훈 · 그림 ChatGPT · 코드 바이브코딩</span></footer>`;
+    <footer class="gfoot"><span>부산 명진초등학교 최일훈</span></footer>`;
   const b = $("#certSave"); if (b) b.onclick = () => saveCertPNG(ds, oath);
 }
 

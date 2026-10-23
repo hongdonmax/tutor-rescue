@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>튜터 출동! 스마트교실 구조대</title>
+<meta name="description" content="2026 부산 디지털튜터 양성센터 지역특화과정 1·2·4차시 체험 미션 웹게임. 교실 곳곳의 SOS를 해결하며 튜터의 역할·보안·에듀원 2.0을 몸으로 익혀요.">
+<meta property="og:title" content="튜터 출동! 스마트교실 구조대">
+<meta property="og:description" content="부산 디지털튜터 양성 지역특화과정 체험 미션 — 21개 미션, 9명의 AI 학생·선생님 롤플레이">
+<meta property="og:image" content="assets/bg/keyart.webp">
+<link rel="icon" href="assets/char/kobi_icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="css/game.css">
+<link rel="stylesheet" href="css/world.css">
+</head>
+<body class="world">
+
+<!-- ========== 타이틀 ========== -->
+<section class="gscr" id="scr-title">
+  <div class="t-bg" aria-hidden="true"></div>
+  <img class="t-kobi" src="assets/char/kobi.webp" alt="" aria-hidden="true">
+  <img class="t-narae" src="assets/char/narae_thumb.webp" alt="" aria-hidden="true">
+  <div class="t-wrap">
+    <div class="t-top">2026 부산 디지털튜터 양성센터 · 지역특화과정</div>
+    <h1 class="t-logo"><span class="l1">튜터 출동!</span><span class="l2">스마트교실 구조대</span></h1>
+    <p class="t-desc">로그인에 막힌 <b>민준</b>, 친구 사진을 올리려는 <b>유나</b>, 무한 로딩에 갇힌 <b>하린</b>… 교실 곳곳에서 SOS가 들어왔어요. 디지털튜터 <b>나래</b>와 로봇 <b>코비</b>와 함께 세 구역 21개 미션을 해결하고 수료 무대에 올라 보세요!</p>
+    <form class="t-form" id="tForm" autocomplete="off">
+      <div class="rowx">
+        <div class="fx"><label for="tNick">튜터 이름 (닉네임)</label><input class="t-in" id="tNick" maxlength="12" placeholder="예: 바다튜터"></div>
+      </div>
+      <div class="fx"><label id="tTeamLab">우리 조</label><div class="tteams" id="tTeam" role="group" aria-labelledby="tTeamLab"></div></div>
+      <div class="rowx" style="align-items:center"><button class="gbtn big" id="tGo" type="submit">출동하기</button><span class="t-prog" id="tProg"></span></div>
+      <p class="t-msg" id="tMsg" role="status"></p>
+    </form>
+  </div>
+  <div class="t-credit">부산 명진초등학교 최일훈 · 그림 ChatGPT · 코드 바이브코딩</div>
+</section>
+
+<!-- ========== 공통 HUD ========== -->
+<header class="topbar" id="hud" hidden>
+  <div class="in">
+    <button class="logo" id="hLogo" type="button" aria-label="타이틀로"><img src="assets/char/kobi.webp" alt=""><span>튜터 출동<b>!</b></span></button>
+    <nav class="hnav" aria-label="화면 이동">
+      <button type="button" data-go="map">지도</button>
+      <button type="button" data-go="s1">1차시</button>
+      <button type="button" data-go="s2">2차시</button>
+      <button type="button" data-go="s4">4차시</button>
+      <button type="button" data-go="note">공유 광장</button>
+      <button type="button" data-go="cert">수료 무대</button>
+    </nav>
+    <span class="sp"></span>
+    <span id="hMe"></span>
+  </div>
+</header>
+
+<!-- ========== 지도 ========== -->
+<section class="gscr" id="scr-map" hidden>
+  <div class="map-wrap">
+    <div class="map-head"><div><h1>스마트스쿨 지도</h1><p>구역을 눌러 출동해요. 미션을 끝낼 때마다 도장이 찍혀요.</p></div></div>
+    <div class="map" id="worldMap" role="group" aria-label="구역 지도"></div>
+    <div class="map-guide"><img src="assets/char/narae_wave.webp" alt="나래 튜터"><div class="bubble" id="mapBubble"></div></div>
+    <div class="zcards" id="zcards"></div>
+  </div>
+  <footer class="gfoot"><span>부산 명진초등학교 최일훈 · 그림 ChatGPT · 코드 바이브코딩</span><span style="flex:1"></span><button class="gbtn sm ghost" id="btnTeacher" type="button">강사 메뉴 · 참여 QR</button><a class="gbtn sm ghost" href="guide/">제작·운영 가이드</a></footer>
+</section>
+
+<!-- ========== 구역 ========== -->
+<section class="gscr" id="scr-zone" hidden></section>
+
+<!-- ========== 공유 광장 ========== -->
+<section class="gscr" id="scr-note" hidden></section>
+
+<!-- ========== 수료 무대 ========== -->
+<section class="gscr" id="scr-cert" hidden></section>
+
+<!-- ========== 미션 시트 ========== -->
+<div class="sheet-wrap" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet">
+    <div class="sheet-head">
+      <span class="mcode" id="sheetCode"></span>
+      <h2 id="sheetTitle"></h2>
+      <button class="xbtn" id="sheetClose" type="button">닫기</button>
+    </div>
+    <div class="sheet-body" id="sheetBody"></div>
+  </div>
+</div>
+<div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/world-data.js"></script>
+<script src="js/core.js"></script>
+<script src="js/games.js"></script>
+<script src="js/persona.js"></script>
+<script src="js/notebook.js"></script>
+<script src="js/screens.js"></script>
+<script>boot();</script>
+</body>
+</html>

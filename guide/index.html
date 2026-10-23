@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>튜터 출동 운영 가이드</title>
+<meta name="description" content="튜터 출동! 스마트교실 구조대 — 강의 운영 방법, ChatGPT 그림 프롬프트, GitHub Pages 배포 방법">
+<link rel="icon" href="../assets/char/kobi_icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<style>
+:root{--bg:#F3F5FA;--paper:#fff;--ink:#141A3C;--muted:#5A6287;--line:#DCE1EE;--navy:#1F2A6B;--navy-soft:#E9ECF8;--orange:#F47B20;--orange-ink:#B9530A;--orange-soft:#FFF0E2;--deep:#0E1440}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0D1230;--paper:#161D45;--ink:#E9ECF8;--muted:#9EA7CF;--line:#2A3368;--navy:#8FA2FF;--navy-soft:#1E2752;--orange-ink:#FFB27A;--orange-soft:#3A2614;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0D1230;--paper:#161D45;--ink:#E9ECF8;--muted:#9EA7CF;--line:#2A3368;--navy:#8FA2FF;--navy-soft:#1E2752;--orange-ink:#FFB27A;--orange-soft:#3A2614;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;font-size:15.5px;line-height:1.7;word-break:keep-all;overflow-wrap:break-word}
+a{color:var(--orange-ink)}
+.hero{position:relative;color:#fff;background:#1B2466 url("../assets/bg/keyart.webp") center/cover no-repeat}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,14,48,.93),rgba(10,14,48,.6) 60%,rgba(10,14,48,.2))}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.hero .wrap{position:relative;padding-block:46px 40px}
+.kick{font-weight:800;letter-spacing:.12em;color:#FFC94D;font-size:13px}
+h1{font-family:Jua,"Noto Sans KR",sans-serif;font-weight:400;font-size:clamp(34px,5.6vw,56px);line-height:1.12;margin:8px 0 12px;text-wrap:balance}
+.hero p{max-width:620px;color:#E1E6FF;margin:0}
+.toc{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.toc a{color:#fff;text-decoration:none;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:6px 14px;font-weight:700;font-size:14px}
+.toc a.go{background:#F47B20;border-color:#F47B20;color:#2A1404}
+section{padding-block:34px 6px}
+h2{font-family:Jua,"Noto Sans KR",sans-serif;font-weight:400;font-size:clamp(26px,3.4vw,34px);margin:0 0 6px;text-wrap:balance}
+h2 small{display:block;font-family:"Noto Sans KR";font-size:12.5px;font-weight:800;letter-spacing:.12em;color:var(--orange-ink)}
+h3{font-size:17px;margin:18px 0 6px}
+.lead{color:var(--muted);margin:0 0 14px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14.5px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--navy-soft);color:var(--navy);font-size:13px}
+tr:last-child td{border-bottom:0}
+.code{font-weight:800;color:var(--navy);white-space:nowrap}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px 18px;min-width:0}
+.card b{color:var(--orange-ink)}
+.prompt{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:12px;min-width:0}
+.prompt .ph{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.prompt .ph b{font-size:15.5px}
+.prompt .ph button{margin-left:auto;appearance:none;border:0;background:var(--orange);color:#2A1404;font-weight:800;border-radius:10px;padding:6px 12px;cursor:pointer;font-family:inherit}
+.prompt pre{margin:0;white-space:pre-wrap;font-family:inherit;font-size:14px;color:var(--ink);background:var(--bg);border-radius:12px;padding:10px 12px}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.shots figure{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.shots img{display:block;width:100%;height:auto}
+.shots figcaption{padding:8px 12px;font-size:13px;color:var(--muted)}
+ol.steps{padding-left:1.2em;margin:0}
+ol.steps li{margin:6px 0}
+.note{background:var(--orange-soft);border-radius:14px;padding:12px 14px;margin-top:12px}
+footer{padding-block:30px 40px;color:var(--muted);font-size:13px}
+img{max-width:100%}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <div class="kick">MAKING &amp; RUNNING GUIDE</div>
+  <h1>튜터 출동! 스마트교실 구조대<br>운영·제작 가이드</h1>
+  <p>2026 부산 디지털튜터 양성센터 지역특화과정 1·2·4차시를 21개 체험 미션으로 바꾼 웹게임이에요. 강의 중 쓰는 방법, 그림을 만든 ChatGPT 프롬프트, GitHub에 올리는 방법을 정리했어요.</p>
+  <nav class="toc" aria-label="목차"><a class="go" href="../">게임 열기</a><a href="#run">① 수업 운영</a><a href="#map">② 차시별 미션</a><a href="#share">③ 공유 활동</a><a href="#art">④ ChatGPT 그림</a><a href="#key">⑤ 그림 다듬기</a><a href="#deploy">⑥ GitHub 배포</a></nav>
+</div></header>
+
+<main class="wrap">
+<section id="run">
+  <h2><small>STEP 1 · RUN</small>강의에서 이렇게 써요</h2>
+  <p class="lead">설치·로그인 없이 링크 하나로 열려요. 연수생 기록은 각자 브라우저(localStorage)에만 저장되고 서버로 보내지 않아요.</p>
+  <div class="cards">
+    <div class="card"><b>1. 입장</b><br>지도 화면 아래 <b>강사 메뉴 · 참여 QR</b> → 오늘 쓸 패들렛 주소를 넣고 QR 만들기 → 화면에 띄우기. 연수생은 이름·조를 고르고 출동!</div>
+    <div class="card"><b>2. 슬라이드 ↔ 미션</b><br>캔바 슬라이드의 MISSION 카드가 나오면 해당 구역의 미션을 3~8분 진행해요. 구역에 처음 들어가면 SOS 브리핑이 떠서 오늘 만날 학생·선생님을 소개해요.</div>
+    <div class="card"><b>3. 공유</b><br>미션 결과 화면의 <b>공유 글 복사</b> → 패들렛에 붙여 넣기. 공유 광장에서 내 산출물을 다시 모아 복사할 수 있어요.</div>
+    <div class="card"><b>4. 마무리</b><br>21개 도장을 모으면 수료 무대에서 <b>수료증 그림</b>을 저장해요. 시연할 때는 강사 코드(config.js의 teacherCode, 기본 2026)로 도장을 모두 찍을 수 있어요.</div>
+  </div>
+  <div class="note">같은 기기·같은 브라우저로 다음 차시에 들어오면 도장이 그대로 남아 있어요. 다른 기기로 바꾸면 처음부터예요.</div>
+</section>
+
+<section id="map">
+  <h2><small>STEP 2 · MISSIONS</small>차시별 미션 21개</h2>
+  <p class="lead">교안의 흐름 그대로 미션을 배치했어요. 롤플레이는 세 갈래 선택지 대화 — 좋은 대응이면 게이지가 오르고 학생 표정이 밝아져요.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>구역</th><th>미션</th><th>교안 연결</th></tr></thead>
+    <tbody id="mtable"></tbody>
+  </table></div>
+</section>
+
+<section id="share">
+  <h2><small>STEP 3 · SHARE</small>백엔드 없이 함께 나누기</h2>
+  <div class="cards">
+    <div class="card"><b>패들렛 주소 넣는 두 가지 방법</b><br>① 강사 메뉴에서 주소를 넣고 QR을 만들면, QR 주소에 <code>?padlet=…</code>이 붙어 연수생 화면의 ‘패들렛 열기’ 버튼이 그 주소로 연결돼요.<br>② 늘 같은 패들렛이면 <code>config.js</code>의 <code>padletUrl</code>에 적어 두세요.</div>
+    <div class="card"><b>모이는 산출물</b><br>한 단어 체크인, 사명 선언 카드, 장애 접수 티켓, 지원 계획 카드(루브릭 셀프 점검), 좋은 대응 문장, 에듀원 클래스 인증.</div>
+    <div class="card"><b>에듀원 2.0</b><br>4차시 M4-0·M4-5는 실제 <a href="https://eduone.busanedu.net" target="_blank" rel="noopener">eduone.busanedu.net</a>에 들어가 클래스를 만들고 돌아와 인증해요.</div>
+  </div>
+</section>
+
+<section id="art">
+  <h2><small>STEP 4 · CHATGPT ART</small>그림은 ChatGPT 한 대화방에서</h2>
+  <p class="lead">그림 10장을 <b>한 대화방에서 이어서</b> 만들어 화풍과 캐릭터를 맞췄어요. 첫 키아트에 스타일을 자세히 쓰고, 다음부터는 “같은 그림체로”라고만 했어요. 오려 쓸 그림은 단색 초록(#00FF00)이나 마젠타(#FF00FF) 배경으로 받았어요.</p>
+  <div id="prompts"></div>
+  <div class="shots">
+    <figure><img src="img/sheet_tutor.jpg" alt="초록 배경의 나래 튜터와 코비 캐릭터 시트" loading="lazy"><figcaption>캐릭터 시트 (초록 배경으로 받기)</figcaption></figure>
+    <figure><img src="img/sheet_people.jpg" alt="학생과 선생님 10명 초상 시트" loading="lazy"><figcaption>롤플레이 인물 10명 — 곤란한 표정</figcaption></figure>
+    <figure><img src="img/sheet_happy.jpg" alt="학생 7명이 기뻐하는 초상 시트" loading="lazy"><figcaption>같은 학생 7명 — 도움받고 기뻐하는 표정</figcaption></figure>
+    <figure><img src="img/sheet_icons.jpg" alt="마젠타 배경의 미션 아이콘 스티커 18개" loading="lazy"><figcaption>미션 아이콘 스티커 18개 (마젠타 배경)</figcaption></figure>
+  </div>
+</section>
+
+<section id="key">
+  <h2><small>STEP 5 · CUT OUT</small>배경 지우고 한 장씩 자르기</h2>
+  <p class="lead">단색 배경을 투명하게 지우고(크로마키), 덩어리마다 잘라 webp로 저장했어요. 쓴 코드는 <a href="chroma_key.py">chroma_key.py</a>예요. 코드 없이 하려면 캔바 <b>배경 제거</b>나 ChatGPT 이미지 편집의 <b>배경 제거</b>를 써도 돼요.</p>
+  <div class="shots">
+    <figure><img src="img/sheet_tutor_after.jpg" alt="배경을 지운 캐릭터 시트" loading="lazy"><figcaption>초록 배경 제거 + 초록 번짐(despill) 정리</figcaption></figure>
+    <figure><img src="img/sheet_icons_after.jpg" alt="배경을 지운 아이콘 시트" loading="lazy"><figcaption>마젠타 배경 제거 → 18개로 자르기</figcaption></figure>
+  </div>
+</section>
+
+<section id="deploy">
+  <h2><small>STEP 6 · GITHUB PAGES</small>링크 하나로 배포하기</h2>
+  <ol class="steps">
+    <li>github.com → 오른쪽 위 <b>＋ → New repository</b> → 이름 <code>tutor-rescue</code> → <b>Public</b> → Create.</li>
+    <li><b>Add file → Upload files</b> → 이 폴더 <b>안의</b> 파일·폴더를 모두 끌어다 놓기 → Commit changes.</li>
+    <li><b>Settings → Pages</b> → Branch: <code>main</code> / <code>(root)</code> → Save. 1~2분 뒤 <code>https://아이디.github.io/tutor-rescue/</code> 주소가 생겨요.</li>
+    <li>내용을 고치려면 GitHub에서 파일을 열고 연필 아이콘 → 수정 → Commit. 학습 내용은 <code>js/data.js</code>, 강사 설정은 <code>config.js</code>에 모여 있어요.</li>
+  </ol>
+  <div class="tbl" style="margin-top:14px"><table>
+    <thead><tr><th>경로</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td class="code">index.html</td><td>타이틀 · 스마트스쿨 지도 · 구역 · 공유 광장 · 수료 무대</td></tr>
+      <tr><td class="code">config.js</td><td>패들렛 주소, 에듀원 주소, 강사 코드, 수료증 연수 이름</td></tr>
+      <tr><td class="code">js/data.js</td><td>교안 기반 미션·퀴즈·롤플레이 대사 데이터</td></tr>
+      <tr><td class="code">js/games.js, js/persona.js</td><td>미션 17종 화면, 선택지 롤플레이</td></tr>
+      <tr><td class="code">js/world-data.js, js/screens.js</td><td>지도 위치, 그림 연결, 화면 전환, 수료증</td></tr>
+      <tr><td class="code">assets/</td><td>ChatGPT로 만든 그림 (배경·캐릭터·인물·아이콘)</td></tr>
+    </tbody>
+  </table></div>
+</section>
+</main>
+<footer class="wrap">부산 명진초등학교 최일훈 · 그림 ChatGPT · 코드 바이브코딩 · <a href="../">게임으로 돌아가기</a></footer>
+
+<script src="../js/data.js"></script>
+<script>
+const ZN = {s1: "1차시 튜터 본부", s2: "2차시 보안 관제탑", s4: "4차시 에듀원 클라우드 섬"};
+const LINK = {
+  "m1-0":"오프닝 → 미션센터 입장","m1-1":"4가지 렌즈 뒤","m1-2":"디지털 격차 장면 뒤","m1-3":"수업 전·중·후 역할 뒤","m1-4":"5분 루틴 뒤","m1-5":"사명 선언","m1-6":"평가 문항",
+  "m2-0":"오프닝","m2-1":"오프닝 · 개인정보","m2-2":"보안 수칙 10 뒤","m2-3":"현장 연계 5가지 뒤","m2-4":"보안 수칙 10 뒤","m2-5":"지원 계획 실습","m2-6":"평가 문항",
+  "m4-0":"에듀원 2.0이란","m4-1":"4대 기능","m4-2":"클래스 중심 모델","m4-3":"수업 전 조치","m4-4":"위기 대응 매뉴얼","m4-5":"클래스 제작 실습","m4-6":"평가 문항"};
+const esc = v => String(v).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+document.getElementById("mtable").innerHTML = MISSIONS.map(m => `<tr><td>${ZN[m.s]}</td><td><span class="code">${m.code}</span> ${esc(m.title)} <span style="color:var(--muted)">(${esc(m.time)})</span></td><td>${esc(LINK[m.id] || "")}</td></tr>`).join("");
+const PROMPTS = [
+  ["① 키아트 (그림체 정하기)", "연수용 웹 게임 '튜터 출동! 부산 스마트교실 구조대'의 키아트(메인 포스터) 그림을 그려줘. [그림체] 픽사+일본 애니 느낌의 생생하고 귀여운 3D 애니메이션 스타일, 윤기 나는 상품 캐릭터 같은 선명한 색감, 영화 포스터 같은 역동적인 구도. 주조색은 짙은 남색(#1F2A6B)과 주황(#F47B20), 포인트로 하늘색과 흰색. [주인공] 30대 한국 여성 디지털튜터 '나래': 어깨 길이 단발머리, 남색 조끼에 주황색 목걸이 명찰, 한 손에 태블릿, 다른 손으로 앞을 가리키며 자신감 있게 웃는 표정. 옆에는 하늘색 둥근 AI 도우미 로봇 '코비'(작은 드론처럼 공중에 떠 있고, 얼굴 화면에 웃는 눈). [배경] 창밖으로 광안대교와 부산 바다가 보이는 밝은 초등학교 스마트 교실. 학생들이 태블릿과 노트북을 들고 손을 들어 도움을 청하고, 공중에는 와이파이·자물쇠 방패·구름·체크 표시 같은 홀로그램 아이콘이 반짝이며 떠 있음. [구도] 가로 16:9 비율, 위쪽 가운데는 제목을 얹을 수 있게 비교적 비워 둬. [주의] 글자·숫자·로고·워터마크는 절대 넣지 마."],
+  ["② 캐릭터 시트 (초록 배경)", "좋아! 같은 그림체로 주인공 '나래'와 로봇 '코비'의 캐릭터 시트를 만들어 줘. 게임 화면에 오려 붙일 거야. - 배경: 그림자 없는 단색 크로마키 초록(#00FF00). 캐릭터 옷·소품에는 초록색을 쓰지 마. - 생김새는 위 그림과 똑같이(갈색 단발머리, 흰 셔츠, 남색 조끼, 주황 목걸이 명찰). - 가로 4칸 한 줄: ① 나래 전신, 정면, 한 손을 흔들며 활짝 웃음 ② 나래 전신, 태블릿을 들고 엄지척 ③ 나래 전신, 깜짝 놀라 두 손을 볼에 대고 입을 동그랗게 ④ 로봇 코비, 웃는 눈, 작은 팔을 벌려 환영. - 그림끼리 겹치지 않게 간격을 넉넉하게, 머리부터 발끝까지 잘리지 않게 위아래 여백, 글자 없이, 가로형 3:2."],
+  ["③ 롤플레이 인물 10명 (곤란한 표정)", "고마워! 이번엔 같은 그림체로 롤플레이에 나오는 인물 10명의 상반신 초상 시트를 만들어 줘. - 배경: 그림자 없는 단색 크로마키 초록(#00FF00), 옷·소품에 초록색 금지, 인물끼리 겹치지 않게 넉넉히 띄우기, 글자 없이, 가로형 3:2. - 5칸 × 2줄, 모두 정면을 보는 가슴 위 상반신. 1행: ① 민준(초3 남자아이, 짧은 머리, 노란 후드티, 태블릿을 들고 난감하게 울상) ② 서아(초4 여자아이, 양갈래 머리, 분홍 가디건, 노트북 화면을 손으로 덮고 시무룩) ③ 지후(초5 남자아이, 안경, 하늘색 셔츠, 고개를 갸웃하며 혼란스러움) ④ 도윤(초6 남자아이, 바가지 머리, 빨간 맨투맨, 두 손을 모아 조르는 표정) ⑤ 유나(초6 여자아이, 긴 생머리에 머리띠, 보라 니트, 스마트폰을 들고 장난스럽게 신난 표정). 2행: ⑥ 하린(초5 여자아이, 단발, 주황 후드, 무한 로딩 화면을 보며 패닉) ⑦ 태오(초4 남자아이, 곱슬머리, 남색 체육복, 당황해서 땀) ⑧ 김 담임(30대 남자 선생님, 단정한 머리, 회색 니트 조끼, 차분하고 진지한 표정) ⑨ 박 정보부장(50대 여자 선생님, 단발 파마, 안경, 남색 재킷, 서류철을 든 꼼꼼한 표정) ⑩ 한 주무관(20대 남자 테크센터 직원, 헤드셋, 남색 폴로셔츠, 친절한 미소)."],
+  ["④ 같은 학생 7명 (기뻐하는 표정)", "완벽해! 같은 그림체로, 위 학생 7명이 튜터의 도움을 받고 기뻐하는 모습을 그려 줘. 생김새·머리·옷은 위 그림과 똑같이 유지. - 배경: 그림자 없는 단색 초록(#00FF00), 인물끼리 겹치지 않게 넉넉히, 글자 없이, 가로형 3:2. - 4칸 × 2줄, 가슴 위 상반신 정면. 1행: 민준(태블릿을 들고 활짝 웃음) / 서아(노트북 화면을 보며 안도의 미소) / 지후(아하! 깨달은 표정, 검지를 세움) / 도윤(멋적게 웃으며 엄지척). 2행: 유나(폰을 내려놓고 고개 끄덕이며 미소) / 하린(안심하고 환하게 웃음) / 태오(신나서 브이) / 로봇 코비(하트 눈으로 두 팔 들고 환호)."],
+  ["⑤ 스마트스쿨 지도", "멋져! 이번엔 같은 그림체로 게임의 '스마트스쿨 지도'를 그려 줘. 연수생들이 구역을 눌러 이동하는 메인 화면이야. - 가로형 16:9, 위에서 비스듬히 내려다본 아이소메트릭 3D 디오라마, 맑은 날, 뒤쪽(위)으로 부산 바다와 광안대교. - 서로 충분히 떨어진 5개 구역을 주황빛으로 빛나는 길로 연결: ① 왼쪽 아래: 튜터 본부 — 밝은 초등학교 교실 건물, 큰 창 너머 태블릿을 든 학생들 ② 가운데 위: 보안 관제탑 — 방패 모양 돔과 자물쇠 홀로그램이 떠 있는 작은 탑과 서버 상자 ③ 오른쪽: 에듀원 클라우드 섬 — 하늘에 떠 있는 구름 위 작은 학교와 홀로그램 칠판, 빛의 다리로 연결 ④ 가운데 아래: 공유 광장 — 알록달록 메모가 붙은 큰 게시판과 벤치 ⑤ 왼쪽 위: 수료 무대 — 주황 깃발과 별 장식, 트로피가 놓인 작은 야외 무대. - 나무, 운동장, 학생 몇 명, 작은 로봇 코비가 날아다니는 모습. 글자·숫자·간판 글씨는 넣지 마."],
+  ["⑥~⑧ 구역 배경 (제목만 바꿔서)", "이번엔 게임 구역 배경 그림(인물 없음, 글자 없음)을 그려 줘. 제목: '튜터 본부'. 아침 햇살이 드는 부산의 초등학교 스마트 교실 내부, 책상 위 태블릿과 노트북, 전자칠판, 태블릿 충전함, 창밖 바다와 광안대교, 공중에 은은하게 떠 있는 와이파이·체크 홀로그램. 앞서와 같은 스타일과 색감(남색·주황·하늘색). 화면 가운데와 아래쪽은 비교적 비어 있게(미션 카드가 올라갈 자리). 가로 16:9.\n(보안 관제탑: 남색 조명의 학교 정보실 겸 보안 관제실, 방패·자물쇠 홀로그램 모니터, 서버 랙, 헤드셋 상담 책상, 밤의 광안대교 / 에듀원 클라우드 섬: 노을빛 하늘의 구름 섬, 구름 위 교실 책상과 강의 영상·문제지·코딩 블록 홀로그램, 빛의 다리)"],
+  ["⑨ 미션 아이콘 스티커 18개 (마젠타 배경)", "정말 예뻐! 이번엔 같은 3D 그림체로 '미션 아이콘' 스티커 시트를 만들어 줘. - 배경: 그림자 없는 단색 마젠타(#FF00FF). 각 그림은 두꺼운 흰 테두리가 있는 다이컷 스티커처럼, 서로 넉넉히 띄우고, 글자·숫자 없이, 가로형 3:2. 색은 남색·주황·하늘색 중심. - 6칸 × 3줄, 모두 18개. 1행: ① 동그란 말풍선 두 개 ② 큰 돋보기 ③ 색이 다른 분류 상자 네 개 ④ 마이크 달린 헤드셋 ⑤ 스톱워치 ⑥ 리본 묶인 두루마리 서약서와 깃펜. 2행: ⑦ 물음표 모양 블록 ⑧ 사진 부분이 가려진 학생증 카드와 눈 모양 돋보기 ⑨ 동그라미 버튼과 엑스 모양 버튼 한 쌍 ⑩ 지그재그 테두리의 접수 티켓 ⑪ 돌돌 말린 파란 설계도 ⑫ 와이파이 공유기. 3행: ⑬ 뒤집힌 카드 두 장 ⑭ 네 층으로 쌓인 블록 ⑮ 탁상시계 두 개 ⑯ 빨간 경광등 사이렌 ⑰ 금색 메달 ⑱ 금색 트로피."]
+];
+document.getElementById("prompts").innerHTML = PROMPTS.map((p, i) => `<div class="prompt"><div class="ph"><b>${esc(p[0])}</b><button type="button" data-i="${i}">복사</button></div><pre>${esc(p[1])}</pre></div>`).join("");
+document.getElementById("prompts").addEventListener("click", async e => {
+  const b = e.target.closest("button[data-i]"); if (!b) return;
+  const t = PROMPTS[+b.dataset.i][1];
+  try { await navigator.clipboard.writeText(t); b.textContent = "복사됨"; } catch (err) { const pre = b.closest(".prompt").querySelector("pre"); const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "선택됨 · Ctrl+C"; }
+  setTimeout(() => b.textContent = "복사", 1600);
+});
+</script>
+</body>
+</html>

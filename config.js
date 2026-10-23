@@ -3,7 +3,7 @@
    ========================================================= */
 window.TR_CONFIG = {
   // 공유 광장의 ‘패들렛 열기’ 버튼 주소. 비워 두면 강사 메뉴에서 만든 QR 주소(?padlet=…)를 씁니다.
-  padletUrl: "",
+  padletUrl: "https://padlet.com/oneteacher/tutor_rescue_2026",
   // 부산 에듀원 2.0 주소
   eduoneUrl: "https://eduone.busanedu.net",
   // 강사 코드: 강사 메뉴에서 ‘시연용 도장 모두 찍기’, ‘내 기록 지우기’에 씁니다.

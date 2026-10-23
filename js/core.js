@@ -73,7 +73,7 @@ const STATE = {
 function saveProgress() { store.set("progress", STATE.progress); }
 function xp() { return Object.values(STATE.progress).reduce((s, p) => s + (p.best || 0), 0); }
 function doneCount(sid) { return MISSIONS.filter(m => (!sid || m.s === sid) && STATE.progress[m.id] && STATE.progress[m.id].done).length; }
-function padletUrl() { return CFG.padletUrl || store.get("padlet", ""); }
+function padletUrl() { return store.get("padlet", "") || CFG.padletUrl; }
 
 /* ===================== 저장소 (백엔드 없음) =====================
    모든 산출물은 ‘내 튜터 수첩’(이 브라우저)에 모이고,
@@ -159,9 +159,15 @@ function postShareText(p) {
   if (p.kind === "word") { const m = MISSIONS.find(q => q.id === p.mission); return `${who} ${m ? m.prompt : "체크인"} → ${p.text}`; }
   return `${who} ${p.text}`;
 }
+// 패들렛 칸 번호 (튜터 출동! 공유 광장 패들렛의 섹션 순서)
+function padletSlot(p) {
+  if (p.kind === "word") return p.session === "s2" ? "④ 수업이 멈추는 순간" : "① 디지털 튜터는 ○○이다";
+  if (p.kind === "line") return p.session === "s1" ? "② 좋은 대응 문장" : "⑨ 자유 공유";
+  return {oath: "③ 나의 사명 선언", ticket: "⑤ 장애 접수 티켓", plan: "⑥ 우리 학교 지원 계획", class: "⑧ 나의 첫 클래스 인증"}[p.kind] || "⑨ 자유 공유";
+}
 function shareStripHTML(p) {
   const pad = padletUrl();
-  return `<div class="share-strip"><button class="btn" type="button" data-copy="${esc(p.id)}">공유 글 복사</button>${pad ? `<a class="btn navy" href="${esc(pad)}" target="_blank" rel="noopener">패들렛 열기 ↗</a>` : ""}</div>`;
+  return `<div class="share-strip"><button class="btn" type="button" data-copy="${esc(p.id)}">공유 글 복사</button>${pad ? `<a class="btn navy" href="${esc(pad)}" target="_blank" rel="noopener">패들렛 열기 ↗</a>` : ""}</div><p class="muted" style="text-align:center;margin:6px 0 0;font-size:13px">패들렛 <b style="color:var(--orange-ink)">${esc(padletSlot(p))}</b> 칸의 ＋를 눌러 붙여 넣어요.</p>`;
 }
 document.addEventListener("click", e => {
   const c = e.target.closest("[data-copy]"); if (!c) return;

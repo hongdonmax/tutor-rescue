@@ -58,7 +58,7 @@ function postHTML(p) {
   const x = p.extra || {};
   const head = `<div class="ph"><span class="who">${esc(p.nick)}</span>${p.team && p.team !== "0" ? `<span class="team">${esc(p.team)}조</span>` : ""}${p.example ? '<span class="ex">예시</span>' : ""}<span class="kind">${esc(KIND_LABEL[p.kind] || p.kind)}${p.session && p.session !== "all" && SESSIONS[p.session] ? " · " + SESSIONS[p.session].no + "차시" : ""}</span></div>`;
   const foot = `<div class="pf"><button class="like" type="button" data-like="${esc(p.id)}" aria-pressed="${!!STATE.liked[p.id]}">♥ <span class="tnum">${p.likes || 0}</span></button>
-    <button class="btn sm" type="button" data-copy="${esc(p.id)}">공유 글 복사</button>${!p.example ? `<button class="btn sm" type="button" data-del="${esc(p.id)}" style="margin-left:auto">지우기</button>` : ""}</div>`;
+    <button class="btn sm" type="button" data-copy="${esc(p.id)}">공유 글 복사</button><span class="muted" style="font-size:12px">→ 패들렛 ${esc(padletSlot(p).split(" ")[0])}</span>${!p.example ? `<button class="btn sm" type="button" data-del="${esc(p.id)}" style="margin-left:auto">지우기</button>` : ""}</div>`;
   let body = "";
   if (p.kind === "oath") return `<article class="post oathpost ${p.example ? "example" : ""}">${head}<div class="mono" style="font-size:11px;letter-spacing:.14em;color:var(--orange)">나는 ${esc(x.role || "연결자")}입니다</div><div class="pt" style="font-size:16.5px;font-weight:500">${esc(p.text)}</div>${foot}</article>`;
   if (p.kind === "plan") {

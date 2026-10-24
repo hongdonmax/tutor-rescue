@@ -6,8 +6,8 @@
 로그인에 막힌 민준, 친구 사진을 올리려는 유나, 무한 로딩에 갇힌 하린… 교실 곳곳의 SOS를 해결하며 디지털튜터의 역할·보안·에듀원 2.0을 몸으로 익히는 웹게임입니다. 설치·로그인·서버 없이 브라우저에서 바로 실행됩니다(PC·태블릿·휴대폰).
 
 ## 바로가기 (GitHub Pages)
-- 🎮 게임: https://hongdonmax.github.io/tutor-rescue/
-- 📘 운영·제작 가이드: https://hongdonmax.github.io/tutor-rescue/guide/
+- 🎮 게임: https://hongdonedu.github.io/tutor-rescue/
+- 📘 운영·제작 가이드: https://hongdonedu.github.io/tutor-rescue/guide/
 
 ## 구성
 | 구역 | 차시 | 미션 |
